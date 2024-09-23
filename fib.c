@@ -41,7 +41,6 @@ unsigned long long int fib_r(unsigned long long int n) {
 
    return fibCache_r[n];
 }
-
 unsigned long long int fib_i(int n) {
    if (fibCache_i[n] != -1)
       return fibCache_i[n];

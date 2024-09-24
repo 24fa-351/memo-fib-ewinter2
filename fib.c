@@ -7,26 +7,21 @@ unsigned long long int fibCache_r[MAX];
 unsigned long long int fibCache_i[MAX];
 
 unsigned long long int fib_r_core(unsigned long long int n) {
-   if (n == 1) 
-      return 1;
-   else if (n <= 0)
-      return 0;
-    
+   if (n <= 1) 
+      return n;
+
    return fib_r_core(n - 1) + fib_r_core(n - 2);
 }
 
 unsigned long long int fib_i_core(int n) {
-   if (n == 1) 
-      return 1;
-   else if (n <= 0)
-      return 0;
+   if (n <= 1)
+      return n;
 
    unsigned long long int a = 0;
    unsigned long long int b = 1;
-   unsigned long long int fib;
 
    for (int i = 2; i <= n; i++) {
-      fib = a + b;
+      unsigned long long int fib = a + b;
       a = b;
       b = fib;
    }
@@ -52,7 +47,7 @@ unsigned long long int fib_i(int n) {
 
 int main(int argc, char *argv[]) {
 
-   if (argc != 3) {
+   if (argc != 3 || argv[2][0] != 'r' && argv[2][0] != 'i') {
       printf("Invalid Input\n");
       return 0;
    }
@@ -69,15 +64,10 @@ int main(int argc, char *argv[]) {
    if (argv[2][0] == 'r') {
       result = fib_r(num);
    }
-   else if (argv[2][0] == 'i') {
-      result = fib_i(num);
-   }
    else {
-    printf("Invalid method.\n");
-    return 0;
+      result = fib_i(num);
    }
 
    printf("%lld\n", result);
-
    return 0;
 }

@@ -29,7 +29,7 @@ unsigned long long int fib_i_core(int n) {
 }
 
 unsigned long long int fib_r(unsigned long long int n) {
-   if (fibCache_r[n] != -1)
+   if (fibCache_r[n] != 0)
       return fibCache_r[n];
    
    fibCache_r[n] = fib_r_core(n);
@@ -37,7 +37,7 @@ unsigned long long int fib_r(unsigned long long int n) {
    return fibCache_r[n];
 }
 unsigned long long int fib_i(int n) {
-   if (fibCache_i[n] != -1)
+   if (fibCache_i[n] != 0)
       return fibCache_i[n];
 
    fibCache_i[n] = fib_i_core(n);
@@ -54,10 +54,10 @@ int main(int argc, char *argv[]) {
 
    int num = atoi(argv[1]) - 1;
 
-   for (int i = 0; i <= num; i++) {
-      fibCache_r[i] = -1;
-      fibCache_i[i] = -1;
-   }
+   /*for (int i = 0; i <= num; i++) {
+      fibCache_r[i] = 0;
+      fibCache_i[i] = 0;
+   }*/
    
    unsigned long long int result = 0;
 
